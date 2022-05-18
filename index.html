@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <link rel="stylesheet" href="pyscript.css" />
+    <script defer src="pyscript.js"></script>
     <title>Hello PyScript</title>
 </head>
 
@@ -14,10 +14,14 @@
     <h1>Hello <a href="https://pyscript.net/">PyScript</a></h1>
     <p>PyScript is a framework that allows users to create rich Python applications in the browser using HTML's
         interface.</p>
-    <py-script> from datetime import datetime;print(f'Hello, World! It is {datetime.now().isoformat()} now.')
+    <h2>Demos: <a href="https://pyscript.net/examples/">https://pyscript.net/examples/</a></h2>
+    <py-script>
+from datetime import datetime
+print(f'Hello, World! It is {datetime.now().isoformat()} now.')
+pyscript.write('title', f'Hello PyScript {datetime.now().date()}')
     </py-script>
     <hr>
-    <py-repl auto-generate="true"></py-repl>
+    <py-repl auto-generate="true">datetime.now()</py-repl>
 </body>
 
 </html>
