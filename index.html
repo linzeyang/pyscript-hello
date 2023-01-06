@@ -6,7 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <script defer src="https://pyscript.net/latest/pyscript.min.js"></script>
+    <py-config>
+        packages = ["requests"]
+        [splashscreen]
+        autoclose = true
+    </py-config>
     <title>Hello PyScript</title>
 </head>
 
@@ -15,13 +20,40 @@
     <p>PyScript is a framework that allows users to create rich Python applications in the browser using HTML's
         interface.</p>
     <h2>Demos: <a href="https://pyscript.net/examples/">https://pyscript.net/examples/</a></h2>
+    <div class="py-box">
+        <div>Wide Column</div>
+        <div>Narrow Column</div>
+        <div>Narrow Column</div>
+    </div>
     <py-script>
-from datetime import datetime
-print(f'Hello, World! It is {datetime.now().isoformat()} now.')
-pyscript.write('title', f'Hello PyScript {datetime.now().date()}')
+        import random
+        
+        print('Hello, World!')
+        display('world hello!')
+        
+        def on_click():
+            Element("div_click").element.innerText = "Clicked!"
+            print("Clicked!")
+        
+        if random.randint(1, 10) % 2:
+            print("Odd!")
+        else:
+            print("Even!")
     </py-script>
+    <div id="div_click">Not Clicked!</div>
+    <button py-click="on_click()" class="py-button" id="btn_click">click me</button><br>
+    <input type="text" class="py-input"/>
+    <py-script>
+        import requests
+    </py-script>
+    <py-script src="/custom_script.py"></py-script>
+
     <hr>
-    <py-repl auto-generate="true">datetime.now()</py-repl>
+
+    <py-repl auto-generate="true">
+        import sys
+        print(sys.version_info)
+    </py-repl>
 </body>
 
 </html>
